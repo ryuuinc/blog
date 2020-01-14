@@ -26,12 +26,12 @@ coverage
 # node-waf configuration
 .lock-wscript
 
+# Lock scripts
+package-lock.json
+yarn.lock
+
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build/Release
-
-# Package list file
-yarn.lock
-package-lock.json
 
 # Dependency directory
 node_modules
@@ -42,7 +42,7 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Tool
+# Code software
 .DS_Store
 .idea
 .vscode
