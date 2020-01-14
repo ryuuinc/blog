@@ -39,4 +39,4 @@ jobs:
         env:
           LINODE_IP: ${{secrets.linode_ip}}
         run: |
-          srsync -az -v --delete -e ssh public/* root@$LINODE_IP:/home/wwwroot/blog/
+          rsync -az -v --delete -e ssh public/* root@$LINODE_IP:/home/wwwroot/blog/
