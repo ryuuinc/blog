@@ -28,10 +28,10 @@ jobs:
           ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
-          yarn global add hexo-cli
-          yarn install
+          npm i -g hexo-cli
+          npm i
           cd themes/suka
-          yarn install -D
+          npm i -D
           cd -
       - name: Deploy hexo
         run: |
