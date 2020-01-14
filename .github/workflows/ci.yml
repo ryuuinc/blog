@@ -23,14 +23,15 @@ jobs:
           LINODE_IP: ${{secrets.linode_ip}}
         run: |
           mkdir -p ~/.ssh/
-          echo $ID_RSA >> ~/.ssh/authorized_keys
+          echo "$ID_RSA" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
-          npm i -g hexo-cli
-          npm i
+          yarn global add hexo-cli
+          yarn install
           cd themes/suka
-          npm i -D
+          yarn install -D
           cd -
       - name: Deploy hexo
         run: |
