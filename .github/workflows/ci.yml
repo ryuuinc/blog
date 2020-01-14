@@ -1,0 +1,42 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.x]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Update system and install rsync
+        run: |
+          sudo apt update && sudo apt install rsync
+      - name: Configuration environment
+        env:
+          ID_RSA: ${{secrets.id_rsa}}
+          LINODE_IP: ${{secrets.linode_ip}}
+        run: |
+          mkdir -p ~/.ssh/
+          echo $ID_RSA >> ~/.ssh/authorized_keys
+          ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
+      - name: Install dependencies
+        run: |
+          npm i -g hexo-cli
+          npm i
+          cd themes/suka
+          npm i -D
+          cd -
+      - name: Deploy hexo
+        run: |
+          hexo g -d
+      - name: Deploy to Linode
+        env:
+          LINODE_IP: ${{secrets.linode_ip}}
+        run: |
+          srsync -az -v --delete -e ssh public/* root@$LINODE_IP:/home/wwwroot/blog/
