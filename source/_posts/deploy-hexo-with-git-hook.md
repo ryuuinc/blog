@@ -40,8 +40,7 @@ $ git init --bare blog.git
 
 ### 第四步
 
-配置 `Git Hooks`，详情可参考[这里](https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90)。
-这里使用的是 `post-receive`，这个 Hook 会在 git 操作完后被运行。
+配置 `Git Hooks`，详情可参考[这里](https://git-scm.com/book/zh/v2/%E8%87%AA%E5%AE%9A%E4%B9%89-Git-Git-%E9%92%A9%E5%AD%90)。这里使用的是 `post-receive`，这个 Hook 会在 git 操作完后被运行。
 
 ```bash
 $ cd /root/hexobot/blog.git/hooks
@@ -72,8 +71,7 @@ deploy:
   branch: master
 ```
 
-要注意换成你自己的服务器地址，以及服务器端 git 仓库的目录。
-至此，我们的 hexo 自动部署已经全部配置好了。
+要注意换成你自己的服务器地址，以及服务器端 git 仓库的目录。至此，我们的 hexo 自动部署已经全部配置好了。
 
 > 有些情况下，hexo-deployer-git 没有被安装，请自行安装。
 

@@ -1,3 +1,4 @@
+--- # ---------------------------------------------------------------
 # ---------------------------------------------------------------
 # !!ATTENTION!!
 # ---------------------------------------------------------------
@@ -11,7 +12,6 @@
 
 # ---------------------------------------------------------------
 # Site Information Settings
-# ---------------------------------------------------------------
 head:
   # Favicon
   #   Put your favicons into `hexo-site/source/` directory.
@@ -103,9 +103,9 @@ nav:
     标签:
       link: /tags/
     #About:
-      #link: /about/
+    #link: /about/
     #Friends:
-      #link: /links/
+    #link: /links/
 
 # SNS Share Switch
 # Used to choose which items will be displayed in share menu.
@@ -122,7 +122,6 @@ sns_share:
 qrcode:
   index_share: false
   post_share: false
-
 
 # ---------------------------------------------------------------
 # Post Settings
@@ -187,8 +186,8 @@ comment:
     client_id:
     client_secret:
   valine:
-    leancloud_appId:  # leancloud application app id
-    leancloud_appKey:  # leancloud application app key
+    leancloud_appId: # leancloud application app id
+    leancloud_appKey: # leancloud application app key
     notify: false # valine mail notify (true/false) https://github.com/xCss/Valine/wiki
     verify: false # valine verify code (true/false)
     pageSize: 10 # comment list page size
