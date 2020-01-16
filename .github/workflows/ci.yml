@@ -30,7 +30,7 @@ jobs:
         run: |
           yarn install
           cd themes/suka
-          yarn install --prod
+          yarn install --production
           cd -
       - name: Deploy hexo
         run: |
