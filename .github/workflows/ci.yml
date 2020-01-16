@@ -28,9 +28,9 @@ jobs:
           ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
-          yarn install
+          npm i
           cd themes/suka
-          yarn install --production
+          npm i -D
           cd -
       - name: Deploy hexo
         run: |
