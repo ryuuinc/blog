@@ -19,13 +19,13 @@ jobs:
           sudo apt update && sudo apt install rsync
       - name: Configuration environment
         env:
-          ID_ED25519: ${{secrets.id_ed25519}}
-          LINODE_IP: ${{secrets.linode_ip}}
+          SEC_ID: ${{secrets.id_ed25519}}
+          SEC_IP: ${{secrets.linode_ip}}
         run: |
           mkdir -p ~/.ssh/
-          echo "$ID_ED25519" > ~/.ssh/id_ed25519
+          echo "$SEC_ID" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
+          ssh-keyscan $SEC_IP > ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
           npm i
@@ -37,6 +37,6 @@ jobs:
           npx hexo g -d
       - name: Rsync to Linode
         env:
-          LINODE_IP: ${{secrets.linode_ip}}
+          SEC_IP: ${{secrets.linode_ip}}
         run: |
-          rsync -az -v --delete -e 'ssh -p 56789' public/* root@$LINODE_IP:/home/wwwroot/blog/
+          rsync -rvz -e 'ssh -p 56789' public/* root@$SEC_IP:/home/wwwroot/blog/
