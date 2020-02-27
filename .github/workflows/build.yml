@@ -19,12 +19,12 @@ jobs:
           sudo apt update && sudo apt install rsync
       - name: Configuration environment
         env:
-          ID_RSA: ${{secrets.id_rsa}}
+          ID_ED25519: ${{secrets.id_ed25519}}
           LINODE_IP: ${{secrets.linode_ip}}
         run: |
           mkdir -p ~/.ssh/
-          echo "$ID_RSA" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "$ID_ED25519" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan $LINODE_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
@@ -39,4 +39,4 @@ jobs:
         env:
           LINODE_IP: ${{secrets.linode_ip}}
         run: |
-          rsync -az -v --delete -e ssh public/* root@$LINODE_IP:/home/wwwroot/blog/
+          rsync -az -v --delete -e 'ssh -p 56789' public/* root@$LINODE_IP:/home/wwwroot/blog/
