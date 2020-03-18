@@ -1,7 +1,8 @@
 {
   "name": "blog",
   "version": "1.0.0",
-  "private": true,
+  "description": "Tienuon's blog",
+  "author": "Tienuon",
   "scripts": {
     "build": "hexo generate",
     "clean": "hexo clean",
