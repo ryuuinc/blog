@@ -1,5 +1,14 @@
 # Tienuon's blog
 
+## 配置主题
+
+```Bash
+git subtree (add/pull) \
+    --prefix themes/suka \
+    git@github.com:SukkaW/hexo-theme-suka.git master \
+    --squash
+```
+
 ## 使用方法
 
 ```Bash
