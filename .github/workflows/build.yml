@@ -5,8 +5,8 @@ on: [push]
 jobs:
   build:
     env:
-      SEC_IP: ${{ secrets.linode_ip }}
-      SEC_ID: ${{ secrets.id_ed25519 }}
+      SEC_IP: ${{ secrets.IP }}
+      SEC_ID: ${{ secrets.KEY }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
