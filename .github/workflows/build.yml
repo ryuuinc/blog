@@ -17,9 +17,9 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Update system and install rsync
+      - name: Install rsync
         run: |
-          sudo apt update && sudo apt install rsync
+          sudo apt install rsync
       - name: Configuration environment
         run: |
           mkdir -p ~/.ssh/
@@ -30,7 +30,7 @@ jobs:
         run: |
           npm ci
           cd themes/suka
-          npm ci -D
+          npm ci --production
           cd -
       - name: Deploy hexo
         run: |
