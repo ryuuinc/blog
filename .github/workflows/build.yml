@@ -28,9 +28,9 @@ jobs:
           ssh-keyscan -t ed25519 -p 56789 $SEC_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
-          npm i
+          npm ci
           cd themes/suka
-          npm i -D
+          npm ci -D
           cd -
       - name: Deploy hexo
         run: |
