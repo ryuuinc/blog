@@ -1,5 +1,7 @@
 # Tienuon's blog
 
+[![Build Status](https://github.com/ryuuinc/blog/workflows/Build/badge.svg)](https://github.com/ryuuinc/blog/actions)
+
 ## 配置主题
 
 ```Bash
