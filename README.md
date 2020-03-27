@@ -12,9 +12,9 @@ git subtree (add/pull) \
 ## 使用方法
 
 ```Bash
-yarn install
+npm i
 cd themes/suka
-yarn install --production
+npm i --production
 cd -
 npx hexo s
 ```
