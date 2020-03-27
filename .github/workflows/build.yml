@@ -17,9 +17,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install rsync
-        run: |
-          sudo apt install rsync
       - name: Configuration environment
         run: |
           mkdir -p ~/.ssh/
@@ -32,9 +29,9 @@ jobs:
           cd themes/suka
           npm ci --production
           cd -
-      - name: Deploy hexo
+      - name: Hexo Generate
         run: |
           npx hexo g -d
-      - name: Rsync to Linode
+      - name: Rsync to server
         run: |
           rsync -rvz -e 'ssh -p 56789' public/* root@$SEC_IP:/home/wwwroot/blog/
