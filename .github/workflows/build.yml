@@ -6,7 +6,7 @@ jobs:
   build:
     env:
       SEC_IP: ${{ secrets.IP }}
-      SEC_ID: ${{ secrets.KEY }}
+      SEC_KEY: ${{ secrets.KEY }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,7 +23,7 @@ jobs:
       - name: Configuration environment
         run: |
           mkdir -p ~/.ssh/
-          echo "$SEC_ID" > ~/.ssh/id_ed25519
+          echo "$SEC_KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 -p 56789 $SEC_IP >> ~/.ssh/known_hosts
       - name: Install dependencies
