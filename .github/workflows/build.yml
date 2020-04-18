@@ -5,8 +5,8 @@ on: [push]
 jobs:
   build:
     env:
-      SEC_IP: ${{ secrets.IP }}
-      SEC_KEY: ${{ secrets.KEY }}
+      IP: ${{ secrets.IP }}
+      KEY: ${{ secrets.KEY }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -20,9 +20,9 @@ jobs:
       - name: Configuration environment
         run: |
           mkdir -p ~/.ssh/
-          echo "$SEC_KEY" > ~/.ssh/id_ed25519
+          echo "$KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -t ed25519 -p 56789 $SEC_IP >> ~/.ssh/known_hosts
+          ssh-keyscan -t ed25519 -p 56789 $IP >> ~/.ssh/known_hosts
       - name: Install dependencies
         run: |
           npm ci
@@ -34,4 +34,4 @@ jobs:
           npx hexo g -d
       - name: Rsync to server
         run: |
-          rsync -rvz -e 'ssh -p 56789' public/* root@$SEC_IP:/home/wwwroot/blog/
+          rsync -rvz -e 'ssh -p 56789' public/* root@$IP:/home/wwwroot/blog/
