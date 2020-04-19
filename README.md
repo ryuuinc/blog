@@ -1,4 +1,4 @@
-# Tienuon's blog
+# blog
 
 [![Build Status](https://github.com/ryuuinc/blog/workflows/Build/badge.svg)](https://github.com/ryuuinc/blog/actions)
 
