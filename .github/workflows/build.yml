@@ -34,4 +34,4 @@ jobs:
           npx hexo g -d
       - name: Rsync to server
         run: |
-          rsync -rvz -e 'ssh -p $PORT' public/* root@$IP:/home/wwwroot/blog/
+          rsync -rvz -e "ssh -p $PORT" public/* root@$IP:/home/wwwroot/blog/
