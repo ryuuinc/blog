@@ -1,37 +1,46 @@
-name: Build
+name: Hexo
 
-on: [push]
+on:
+  push:
+    branches: [master]
+
+env:
+  IP: ${{ secrets.IP }}
+  KEY: ${{ secrets.KEY }}
+  PORT: ${{ secrets.PORT }}
 
 jobs:
-  build:
-    env:
-      IP: ${{ secrets.IP }}
-      KEY: ${{ secrets.KEY }}
-      PORT: ${{ secrets.PORT }}
+  deploy:
+    name: Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
+
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2-beta
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup node version
+        uses: actions/setup-node@v2-beta
         with:
           node-version: '12'
+
       - name: Configuration environment
         run: |
           mkdir -p ~/.ssh/
           echo "$KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 -p $PORT $IP >> ~/.ssh/known_hosts
+
       - name: Install dependencies
         run: |
           npm ci
           cd themes/suka
           npm ci --production
           cd -
-      - name: Hexo Generate
+
+      - name: Generate static files
         run: |
           npx hexo g -d
+
       - name: Rsync to server
         run: |
           rsync -rvz -e "ssh -p $PORT" public/* root@$IP:/home/wwwroot/blog/
