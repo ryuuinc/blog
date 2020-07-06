@@ -18,7 +18,7 @@ head:
   #   To get or check favicons visit: https://realfavicongenerator.net
   favicon:
     # You should use a image/x-icon type icon and configure it here.
-    ico: /ryuu/favicon.ico
+    ico: /site/favicon.ico
     # 16x16 png
     small:
     # 32x32 png
@@ -80,7 +80,7 @@ uiux:
   bg_color:
 
 img:
-  avatar: '/ryuu/avatar.png'
+  avatar: /site/avatar.png
 
 # ---------------------------------------------------------------
 # Menu Settings
