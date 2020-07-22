@@ -16,7 +16,7 @@
     "start": "hexo server"
   },
   "hexo": {
-    "version": "4.2.0"
+    "version": "4.2.1"
   },
   "dependencies": {
     "hexo": "^4.2.1",
