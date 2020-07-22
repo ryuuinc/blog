@@ -33,9 +33,6 @@ jobs:
       - name: Install dependencies
         run: |
           npm ci
-          cd themes/suka
-          npm ci --production
-          cd -
 
       - name: Generate static files
         run: |
