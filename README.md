@@ -5,9 +5,9 @@
 ## 配置主题
 
 ```Bash
-git subtree (add/pull) \
-    --prefix themes/suka \
-    git@github.com:SukkaW/hexo-theme-suka.git master \
+git subtree add \
+    --prefix themes/fluid \
+    git@github.com:fluid-dev/hexo-theme-fluid.git master \
     --squash
 ```
 
@@ -15,9 +15,6 @@ git subtree (add/pull) \
 
 ```Bash
 npm i
-cd themes/suka
-npm i --production
-cd -
 npx hexo s
 ```
 
