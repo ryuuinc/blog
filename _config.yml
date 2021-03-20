@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Tienuon's Blog
+title: 'RYUU.ONE'
 subtitle: ''
 description: ''
 keywords:
@@ -88,6 +88,13 @@ pagination_dir: page
 include:
 exclude:
 ignore:
+
+# Browsersync
+browsersync:
+  logLevel: 'warn'
+  ghostMode:
+    scroll: true
+  instanceName: 'uniqueString'
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
