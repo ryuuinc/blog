@@ -6,6 +6,7 @@ categories:
 tags:
   - Javascript
   - Unicode
+index_img: /img/unicode-in-javascript/banner.png
 ---
 
 在以往的项目中经常会遇到多字节字符的处理，最近重新查阅了一些资料，记录一下关于 Unicode 的一些知识点，方便日后学习。

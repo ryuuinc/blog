@@ -5,6 +5,7 @@ categories:
   - Unix
 tags:
   - Telegram
+index_img: /img/build-telegram-bot/banner.png
 ---
 
 作为一个 Telegram 的重度用户，早在使用之初我就听说 `Telegram Bot` 的开放性。深入了解以后我使用 Bot 实现了一系列功能，比如通过 Bot 查询公交到站情况、查询历史上的今天、通过 `Github Release API` 获取最新 SS 下载链接以及查询信息生成二维码等。这些功能通过简单命令调用，相当方便。今天就来分享一下如何创建一个 `Telegram Bot`。

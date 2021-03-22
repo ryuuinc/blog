@@ -5,6 +5,7 @@ categories:
   - Life
 tags:
   - Network
+index_img: /img/psn-game-boost-plan/banner.png
 ---
 
 作为一个主机玩家，最头疼的地方还是 PS4 系统更新和游戏下载的速度。早前由于索尼并没有在国内部署 PSN 下载服务的 CDN，所以下载速度捉急。但是现在国内的大部分 DNS 服务商都能正确的将 PSN 的相关域名解析到国内的服务器上，但是偶尔还是会出现一些问题，今天就来聊下相关的解决办法。

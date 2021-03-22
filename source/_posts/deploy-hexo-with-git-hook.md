@@ -5,6 +5,7 @@ categories:
   - Unix
 tags:
   - Hexo
+index_img: /img/deploy-hexo-with-git-hook/banner.png
 ---
 
 装好 Hexo 以后，总是忍不住写点什么，刚好想到可以把自动部署的过程拿出来说一下。网上很多教程都是教你如何将 Hexo 部署到 `Github Pages` 上，但是今天要说的是把 Hexo 部署到自己的 VPS 上，参考了一些教程，写一个我觉得不错的办法。

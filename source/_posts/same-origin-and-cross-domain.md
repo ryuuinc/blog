@@ -5,6 +5,7 @@ categories:
   - FE
 tags:
   - Browser
+index_img: /img/same-origin-and-cross-domain/banner.png
 ---
 
 实际开发中，经常会遇到需要发起跨域请求的时候，总的来说还是有不少解决办法的，说到需要跨域的原因就不得不提同源政策了，还有跨域的究极解法 CORS。
