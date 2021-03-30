@@ -41,4 +41,4 @@ jobs:
 
       - name: Rsync to server
         run: |
-          rsync -rvz -e "ssh -p $PORT" public/* root@$IP:/home/wwwroot/blog/
+          rsync -rvz -e "ssh -p $PORT" --delete public/ root@$IP:/home/wwwroot/blog/
