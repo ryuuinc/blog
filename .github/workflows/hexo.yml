@@ -26,7 +26,7 @@ jobs:
 
       - name: Configuration environment
         run: |
-          mkdir -p ~/.ssh/ /home/wwwroot/blog/
+          mkdir -p ~/.ssh
           echo "$KEY" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -t ed25519 -p $PORT $IP >> ~/.ssh/known_hosts
