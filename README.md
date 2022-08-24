@@ -15,8 +15,6 @@ npx hexo s
 
 ```bash
 IP='x.x.x.x'
-
 KEY='xxxx'
-
 PORT='xxxx'
 ```
