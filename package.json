@@ -15,7 +15,7 @@
     "start": "hexo server"
   },
   "hexo": {
-    "version": "6.1.0"
+    "version": "6.2.0"
   },
   "dependencies": {
     "hexo": "^6.0.0",
@@ -27,6 +27,6 @@
     "hexo-renderer-marked": "^5.0.0",
     "hexo-renderer-stylus": "^2.0.0",
     "hexo-server": "^3.0.0",
-    "hexo-theme-fluid": "^1.8.12"
+    "hexo-theme-fluid": "^1.9.2"
   }
 }
