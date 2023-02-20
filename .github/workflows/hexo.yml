@@ -21,8 +21,7 @@ jobs:
       - name: Setup node version
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-          check-latest: true
+          node-version: 18
 
       - name: Configuration environment
         run: |
