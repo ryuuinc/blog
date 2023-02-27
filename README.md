@@ -14,7 +14,7 @@ npx hexo s
 部署时需要在 `Actions secrets` 中添加如下环境变量：
 
 ```bash
-IP='x.x.x.x'
-KEY='xxxx'
-PORT='xxxx'
+SERVER_IP='x.x.x.x'
+SERVER_PORT='xxxx'
+SERVER_KEY='xxxx'
 ```

@@ -5,15 +5,14 @@ on:
     branches: [master]
 
 env:
-  IP: ${{ secrets.IP }}
-  KEY: ${{ secrets.KEY }}
-  PORT: ${{ secrets.PORT }}
+  IP: ${{ secrets.SERVER_IP }}
+  PORT: ${{ secrets.SERVER_PORT }}
+  KEY: ${{ secrets.SERVER_KEY }}
 
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
