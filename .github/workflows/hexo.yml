@@ -2,7 +2,10 @@ name: Hexo
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+    paths-ignore:
+      - '**/README.md'
 
 env:
   IP: ${{ secrets.SERVER_IP }}
