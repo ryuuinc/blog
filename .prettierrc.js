@@ -6,7 +6,7 @@ module.exports = {
   // use spaces instead of indentations
   useTabs: false,
   // semicolon at the end of the line
-  semi: true,
+  semi: false,
   // use single quotes
   singleQuote: true,
   // object's key is quoted only when necessary
@@ -33,5 +33,5 @@ module.exports = {
   // decide whether to break the html according to the display style
   htmlWhitespaceSensitivity: 'css',
   // lf for newline
-  endOfLine: 'lf',
+  endOfLine: 'lf'
 };
