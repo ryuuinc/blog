@@ -2,9 +2,9 @@
 title: 使用 Git Hook 部署 Hexo 到 VPS
 date: 2018-04-14 16:17:24
 categories:
-  - Unix
+    - Unix
 tags:
-  - Hexo
+    - Hexo
 index_img: /img/deploy-hexo-with-git-hook/banner.png
 ---
 
@@ -67,9 +67,9 @@ $ chmod +x post-receive
 
 ```bash
 deploy:
-  type: git
-  repo: git@xxx.xxx.xxx.xxx:/root/hexobot/blog.git
-  branch: master
+    type: git
+    repo: git@xxx.xxx.xxx.xxx:/root/hexobot/blog.git
+    branch: master
 ```
 
 要注意换成你自己的服务器地址，以及服务器端 git 仓库的目录。至此，我们的 hexo 自动部署已经全部配置好了。

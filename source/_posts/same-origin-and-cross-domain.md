@@ -2,9 +2,9 @@
 title: 同源和跨域
 date: 2018-10-17 23:16:26
 categories:
-  - FE
+    - FE
 tags:
-  - Browser
+    - Browser
 index_img: /img/same-origin-and-cross-domain/banner.png
 ---
 
@@ -47,24 +47,23 @@ iframe = document.createElement('iframe')
 iframe.style.display = 'none'
 var state = 0
 
-iframe.onload = function() {
-  if (state === 1) {
-    // 获取数据
-    var data = window.location.hash
-    // 销毁 iframe
-    iframe.contentWindow.document.write('')
-    iframe.contentWindow.close()
-    document.body.removeChild(iframe)
-  } else if (state === 0) {
-    state = 1
-    iframe.contentWindow.location = 'http://tinykid.org/xxx.html'
-  }
+iframe.onload = function () {
+    if (state === 1) {
+        // 获取数据
+        var data = window.location.hash
+        // 销毁 iframe
+        iframe.contentWindow.document.write('')
+        iframe.contentWindow.close()
+        document.body.removeChild(iframe)
+    } else if (state === 0) {
+        state = 1
+        iframe.contentWindow.location = 'http://tinykid.org/xxx.html'
+    }
 }
 document.body.appendChild(iframe)
 
-
 // xxx 页面中
-parent.location.hash = "data";
+parent.location.hash = 'data'
 ```
 
 ### window.postMessage
@@ -83,7 +82,7 @@ window.opener.postMessage('Nice to see you', 'http://parent.com');
 
 //父子都可以监听 message 事件响应
 window.addEventListener('message', function(e) {
-  // do something
+    // do something
 }, false);
 ```
 
@@ -96,53 +95,53 @@ WebSockets 是一个可以创建和服务器间进行双向会话的高级技术
 JSONP 虽然很好用，但是只支持 Get 方法，其思路是 script 标签是没有同源限制的，所以可以利用这点来发起跨域请求。看代码：
 
 ```Javascript
-;(function(global) {
-  var id = 0,
-    container = document.getElementsByTagName('head')[0]
+;(function (global) {
+    var id = 0,
+        container = document.getElementsByTagName('head')[0]
 
-  function jsonp(options) {
-    if (!options || !options.url) return
+    function jsonp(options) {
+        if (!options || !options.url) return
 
-    var scriptNode = document.createElement('script'),
-      data = options.data || {},
-      url = options.url,
-      callback = options.callback,
-      fnName = 'jsonp' + id++
+        var scriptNode = document.createElement('script'),
+            data = options.data || {},
+            url = options.url,
+            callback = options.callback,
+            fnName = 'jsonp' + id++
 
-    // 添加回调函数
-    data['callback'] = fnName
+        // 添加回调函数
+        data['callback'] = fnName
 
-    // 拼接url
-    var params = []
-    for (var key in data) {
-      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        // 拼接url
+        var params = []
+        for (var key in data) {
+            params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+        }
+        url = url.indexOf('?') > 0 ? url + '&' : url + '?'
+        url += params.join('&')
+        scriptNode.src = url
+
+        // 传递的是一个匿名的回调函数，要执行的话，暴露为一个全局方法
+        global[fnName] = function (ret) {
+            callback && callback(ret)
+            container.removeChild(scriptNode)
+            delete global[fnName]
+        }
+
+        // 出错处理
+        scriptNode.onerror = function () {
+            callback &&
+                callback({
+                    error: 'error',
+                })
+            container.removeChild(scriptNode)
+            global[fnName] && delete global[fnName]
+        }
+
+        scriptNode.type = 'text/javascript'
+        container.appendChild(scriptNode)
     }
-    url = url.indexOf('?') > 0 ? url + '&' : url + '?'
-    url += params.join('&')
-    scriptNode.src = url
 
-    // 传递的是一个匿名的回调函数，要执行的话，暴露为一个全局方法
-    global[fnName] = function(ret) {
-      callback && callback(ret)
-      container.removeChild(scriptNode)
-      delete global[fnName]
-    }
-
-    // 出错处理
-    scriptNode.onerror = function() {
-      callback &&
-        callback({
-          error: 'error'
-        })
-      container.removeChild(scriptNode)
-      global[fnName] && delete global[fnName]
-    }
-
-    scriptNode.type = 'text/javascript'
-    container.appendChild(scriptNode)
-  }
-
-  global.jsonp = jsonp
+    global.jsonp = jsonp
 })(this)
 ```
 
