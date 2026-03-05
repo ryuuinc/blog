@@ -2,9 +2,9 @@
 title: 使用 Git Hook 部署 Hexo 到 VPS
 date: 2018-04-14 16:17:24
 categories:
-    - Unix
+  - Unix
 tags:
-    - Hexo
+  - Hexo
 index_img: /img/deploy-hexo-with-git-hook/banner.png
 ---
 

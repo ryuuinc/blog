@@ -2,9 +2,9 @@
 title: 如何创建一个 Telegram Bot
 date: 2019-04-20 10:25:50
 categories:
-    - Unix
+  - Unix
 tags:
-    - Telegram
+  - Telegram
 index_img: /img/build-telegram-bot/banner.png
 ---
 

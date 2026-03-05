@@ -2,9 +2,9 @@
 title: PSN 游戏下载更新加速方案
 date: 2019-01-27 19:25:40
 categories:
-    - Life
+  - Life
 tags:
-    - Network
+  - Network
 index_img: /img/psn-game-boost-plan/banner.png
 ---
 

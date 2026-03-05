@@ -2,10 +2,10 @@
 title: JavaScript 中的 Unicode
 date: 2018-7-21 22:05:58
 categories:
-    - FE
+  - FE
 tags:
-    - Javascript
-    - Unicode
+  - Javascript
+  - Unicode
 index_img: /img/unicode-in-javascript/banner.png
 ---
 

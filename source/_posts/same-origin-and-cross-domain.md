@@ -2,9 +2,9 @@
 title: 同源和跨域
 date: 2018-10-17 23:16:26
 categories:
-    - FE
+  - FE
 tags:
-    - Browser
+  - Browser
 index_img: /img/same-origin-and-cross-domain/banner.png
 ---
 

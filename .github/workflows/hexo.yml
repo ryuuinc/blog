@@ -1,51 +1,51 @@
 name: Hexo
 
 on:
-    push:
-        branches:
-            - master
-        paths-ignore:
-            - '**/README.md'
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '**/README.md'
 
 env:
-    IP: ${{ secrets.SERVER_IP }}
-    PORT: ${{ secrets.SERVER_PORT }}
-    KEY: ${{ secrets.SERVER_KEY }}
+  IP: ${{ secrets.SERVER_IP }}
+  PORT: ${{ secrets.SERVER_PORT }}
+  KEY: ${{ secrets.SERVER_KEY }}
 
 jobs:
-    deploy:
-        name: Deploy
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v6
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
 
-            - name: Install pnpm
-              uses: pnpm/action-setup@v4
-              with:
-                  version: 9.15.4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.15.4
 
-            - name: Setup node version
-              uses: actions/setup-node@v6
-              with:
-                  node-version: 24
-                  cache: 'pnpm'
+      - name: Setup node version
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'pnpm'
 
-            - name: Configuration environment
-              run: |
-                  mkdir -p ~/.ssh
-                  echo "$KEY" > ~/.ssh/id_ed25519
-                  chmod 600 ~/.ssh/id_ed25519
-                  ssh-keyscan -t ed25519 -p $PORT $IP >> ~/.ssh/known_hosts
+      - name: Configuration environment
+        run: |
+          mkdir -p ~/.ssh
+          echo "$KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -t ed25519 -p $PORT $IP >> ~/.ssh/known_hosts
 
-            - name: Install dependencies
-              run: |
-                  pnpm i
+      - name: Install dependencies
+        run: |
+          pnpm i
 
-            - name: Generate static files
-              run: |
-                  pnpm hexo g -d
+      - name: Generate static files
+        run: |
+          pnpm hexo g -d
 
-            - name: Rsync to server
-              run: |
-                  rsync -rvz -e "ssh -p $PORT" --delete public/ root@$IP:/home/wwwroot/blog/
+      - name: Rsync to server
+        run: |
+          rsync -rvz -e "ssh -p $PORT" --delete public/ root@$IP:/home/wwwroot/blog/
