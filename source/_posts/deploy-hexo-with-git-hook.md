@@ -67,9 +67,9 @@ $ chmod +x post-receive
 
 ```bash
 deploy:
-    type: git
-    repo: git@xxx.xxx.xxx.xxx:/root/hexobot/blog.git
-    branch: master
+  type: git
+  repo: git@xxx.xxx.xxx.xxx:/root/hexobot/blog.git
+  branch: master
 ```
 
 要注意换成你自己的服务器地址，以及服务器端 git 仓库的目录。至此，我们的 hexo 自动部署已经全部配置好了。

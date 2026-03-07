@@ -48,17 +48,17 @@ iframe.style.display = 'none'
 var state = 0
 
 iframe.onload = function () {
-    if (state === 1) {
-        // 获取数据
-        var data = window.location.hash
-        // 销毁 iframe
-        iframe.contentWindow.document.write('')
-        iframe.contentWindow.close()
-        document.body.removeChild(iframe)
-    } else if (state === 0) {
-        state = 1
-        iframe.contentWindow.location = 'http://tinykid.org/xxx.html'
-    }
+  if (state === 1) {
+    // 获取数据
+    var data = window.location.hash
+    // 销毁 iframe
+    iframe.contentWindow.document.write('')
+    iframe.contentWindow.close()
+    document.body.removeChild(iframe)
+  } else if (state === 0) {
+    state = 1
+    iframe.contentWindow.location = 'http://tinykid.org/xxx.html'
+  }
 }
 document.body.appendChild(iframe)
 
@@ -72,18 +72,22 @@ parent.location.hash = 'data'
 
 ```Javascript
 // 弹出一个新窗口
-var popup = window.open('http://child.com');
+var popup = window.open('http://child.com')
 
 //父窗口向子窗口发送消息
-popup.postMessage('Hello World!', 'http://child.com');
+popup.postMessage('Hello World!', 'http://child.com')
 
 //子窗口向父窗口发送消息
-window.opener.postMessage('Nice to see you', 'http://parent.com');
+window.opener.postMessage('Nice to see you', 'http://parent.com')
 
 //父子都可以监听 message 事件响应
-window.addEventListener('message', function(e) {
+window.addEventListener(
+  'message',
+  function (e) {
     // do something
-}, false);
+  },
+  false,
+)
 ```
 
 ### WebSocket
@@ -96,52 +100,52 @@ JSONP 虽然很好用，但是只支持 Get 方法，其思路是 script 标签�
 
 ```Javascript
 ;(function (global) {
-    var id = 0,
-        container = document.getElementsByTagName('head')[0]
+  var id = 0,
+    container = document.getElementsByTagName('head')[0]
 
-    function jsonp(options) {
-        if (!options || !options.url) return
+  function jsonp(options) {
+    if (!options || !options.url) return
 
-        var scriptNode = document.createElement('script'),
-            data = options.data || {},
-            url = options.url,
-            callback = options.callback,
-            fnName = 'jsonp' + id++
+    var scriptNode = document.createElement('script'),
+      data = options.data || {},
+      url = options.url,
+      callback = options.callback,
+      fnName = 'jsonp' + id++
 
-        // 添加回调函数
-        data['callback'] = fnName
+    // 添加回调函数
+    data['callback'] = fnName
 
-        // 拼接url
-        var params = []
-        for (var key in data) {
-            params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-        }
-        url = url.indexOf('?') > 0 ? url + '&' : url + '?'
-        url += params.join('&')
-        scriptNode.src = url
+    // 拼接url
+    var params = []
+    for (var key in data) {
+      params.push(encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    }
+    url = url.indexOf('?') > 0 ? url + '&' : url + '?'
+    url += params.join('&')
+    scriptNode.src = url
 
-        // 传递的是一个匿名的回调函数，要执行的话，暴露为一个全局方法
-        global[fnName] = function (ret) {
-            callback && callback(ret)
-            container.removeChild(scriptNode)
-            delete global[fnName]
-        }
-
-        // 出错处理
-        scriptNode.onerror = function () {
-            callback &&
-                callback({
-                    error: 'error',
-                })
-            container.removeChild(scriptNode)
-            global[fnName] && delete global[fnName]
-        }
-
-        scriptNode.type = 'text/javascript'
-        container.appendChild(scriptNode)
+    // 传递的是一个匿名的回调函数，要执行的话，暴露为一个全局方法
+    global[fnName] = function (ret) {
+      callback && callback(ret)
+      container.removeChild(scriptNode)
+      delete global[fnName]
     }
 
-    global.jsonp = jsonp
+    // 出错处理
+    scriptNode.onerror = function () {
+      callback &&
+        callback({
+          error: 'error',
+        })
+      container.removeChild(scriptNode)
+      global[fnName] && delete global[fnName]
+    }
+
+    scriptNode.type = 'text/javascript'
+    container.appendChild(scriptNode)
+  }
+
+  global.jsonp = jsonp
 })(this)
 ```
 
